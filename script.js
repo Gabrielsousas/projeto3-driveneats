@@ -1,28 +1,48 @@
+let botaoRefeicao;
 
-function selecionarPrato (botaoClicado){
-    const botaoSelecionadoAnteriormente = document.querySelector('.refeições .selecionado');
-    if (botaoSelecionadoAnteriormente !== null){
-        botaoSelecionadoAnteriormente.classList.remove('selecionado')
+function selecionarPrato (botaoThis){
+    const botaoSelecionadoAnteriormente1 = document.querySelector('.refeições .selecionado', );
+    if (botaoSelecionadoAnteriormente1 !== null){
+        botaoSelecionadoAnteriormente1.classList.remove('selecionado')
     }
-    const botao = document.querySelector(botaoClicado);
-    botao.classList.add('selecionado');
+    botaoThis.classList.add('selecionado');
+    botaoRefeicao = botaoThis.innerHTML;
+    verificaPreenchimento ()
 }
 
+let botaoBeBida;
 
-function selecionarBebida (botaoClicado){
+function selecionarBebida (botaoThisBebida){
     const botaoSelecionadoAnteriormente = document.querySelector('.bebidas .selecionado');
     if (botaoSelecionadoAnteriormente !== null){
         botaoSelecionadoAnteriormente.classList.remove('selecionado')
     }
-    const botao = document.querySelector(botaoClicado);
-    botao.classList.add('selecionado');
+    botaoThisBebida.classList.add('selecionado');
+    botaoBeBida = botaoThisBebida.innerHTML;
+    verificaPreenchimento ()
 }
 
-function selecionarSobremesa (botaoClicado){
+let botaoSobremesa;
+
+function selecionarSobremesa (botaoThisSobremesa){
     const botaoSelecionadoAnteriormente = document.querySelector('.sobremesas .selecionado');
     if (botaoSelecionadoAnteriormente !== null){
         botaoSelecionadoAnteriormente.classList.remove('selecionado')
     }
-    const botao = document.querySelector(botaoClicado);
-    botao.classList.add('selecionado');
+    botaoThisSobremesa.classList.add('selecionado');
+    botaoSobremesa = botaoThisSobremesa.innerHTML;
+    verificaPreenchimento ()
+}
+
+function verificaPreenchimento (){
+    if (botaoRefeicao !== undefined){
+       if (botaoBeBida !== undefined){
+        if (botaoSobremesa !== undefined){
+            const habilitarButton = document.querySelector('.fechar-pedido')
+            habilitarButton.removeAttribute('disabled')
+            habilitarButton.innerHTML = "Finalizar Pedido";
+            habilitarButton.classList.add('button-selecionado')    
+        }
+        }
+    }
 }

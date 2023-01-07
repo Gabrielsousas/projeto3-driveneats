@@ -46,6 +46,8 @@ body{
     border: 5px solid #32B72F;
 }
 
+
+
 .container-principal {
     width: 100%;
     margin: 92px auto;
@@ -140,10 +142,10 @@ img {
     align-items: center;
 }
 
-.footer-conteudo button {
+.fechar-pedido {
     text-align: center  ;
     height: 53px;
-    width: 95%;
+    width: 95vw;
     background-color: #CBCBCB;
     border-radius: 50px;
     border: none;
@@ -153,5 +155,9 @@ img {
     line-height: 23px;
     letter-spacing: 0.018em;
     text-align: center;
+}
+
+.button-selecionado{
+    background-color: #32B72F;
     color: white;
 }
