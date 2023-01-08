@@ -1,23 +1,28 @@
 let botaoRefeicao;
 
-function selecionarPrato (botaoThis){
-    const botaoSelecionadoAnteriormente1 = document.querySelector('.refeições .selecionado', );
-    if (botaoSelecionadoAnteriormente1 !== null){
-        botaoSelecionadoAnteriormente1.classList.remove('selecionado')
+function selecionarPrato (prato){
+    const clearSelection = document.querySelector('.refeições .selecionado', );
+   
+
+    if (clearSelection !== null){
+        clearSelection.classList.remove('selecionado');
     }
-    botaoThis.classList.add('selecionado');
-    botaoRefeicao = botaoThis.innerHTML;
+
+    prato.classList.add('selecionado');
+    botaoRefeicao = prato.innerHTML;
     verificaPreenchimento ()
 }
 
 let botaoBeBida;
 
 function selecionarBebida (botaoThisBebida){
-    const botaoSelecionadoAnteriormente = document.querySelector('.bebidas .selecionado');
-    if (botaoSelecionadoAnteriormente !== null){
-        botaoSelecionadoAnteriormente.classList.remove('selecionado')
+    const clearSelection = document.querySelector('.bebidas .selecionado');
+    if (clearSelection !== null){
+        clearSelection.classList.remove('selecionado')
     }
+
     botaoThisBebida.classList.add('selecionado');
+
     botaoBeBida = botaoThisBebida.innerHTML;
     verificaPreenchimento ()
 }
@@ -25,9 +30,9 @@ function selecionarBebida (botaoThisBebida){
 let botaoSobremesa;
 
 function selecionarSobremesa (botaoThisSobremesa){
-    const botaoSelecionadoAnteriormente = document.querySelector('.sobremesas .selecionado');
-    if (botaoSelecionadoAnteriormente !== null){
-        botaoSelecionadoAnteriormente.classList.remove('selecionado')
+    const clearSelection = document.querySelector('.sobremesas .selecionado');
+    if (clearSelection !== null){
+        clearSelection.classList.remove('selecionado')
     }
     botaoThisSobremesa.classList.add('selecionado');
     botaoSobremesa = botaoThisSobremesa.innerHTML;
@@ -45,4 +50,10 @@ function verificaPreenchimento (){
         }
         }
     }
+}
+
+function mostrarIcon(){
+    
+        
+    
 }
