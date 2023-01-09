@@ -94,8 +94,8 @@ function fecharPedido() {
 }
 
 function exibirValorFinal(){
-  const precoFinal = (preco1 + preco2 + preco3);
-  console.log(precoFinal);
+  let precoFinal = (preco1 + preco2 + preco3);
+  alert (precoFinal)
 }
 
 
