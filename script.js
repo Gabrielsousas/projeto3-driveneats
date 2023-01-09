@@ -50,7 +50,7 @@ function verificaPreenchimento() {
       if (botaoSobremesa !== undefined) {
         const habilitarButton = document.querySelector(".fechar-pedido");
         habilitarButton.removeAttribute("disabled");
-        habilitarButton.innerHTML = "Finalizar Pedido";
+        habilitarButton.innerHTML = "Fechar Pedido";
         habilitarButton.classList.add("button-selecionado");
         trocarNomes();
       }
@@ -92,8 +92,10 @@ function fecharPedido() {
   document.querySelector(".conteudo-total").classList.add("opaco");
 }
 
-function whatsapp(){
-  const mensagem = `Olá, gostaria de fazer o pedido: \n- Prato: ${refeicao.innerHTML}\n- Bebida: ${bebida.innerHTML}\n- Sobremesa: ${sobremesa.innerHTML}\nTotal: ${formatarEmReal(valorTotalGlobal)}\nNome: Fulano\nEndereço: Rua...`; 
+function whatsapp(){  
+  const nome = prompt("Qual o seu nome?");
+  const endereco = prompt("Qual o seu endereço?");
+  const mensagem = `Olá, gostaria de fazer o pedido: \n- Prato: ${refeicao.innerHTML}\n- Bebida: ${bebida.innerHTML}\n- Sobremesa: ${sobremesa.innerHTML}\nTotal: ${formatarEmReal(valorTotalGlobal)}\nNome: ${nome}\nEndereço: ${endereco}`; 
   const URI = `https://wa.me/5521983767744?text=" ${mensagem}`; 
   const encodedURI = encodeURI(URI)
   window.open(encodedURI)
