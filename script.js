@@ -10,9 +10,7 @@ function selecionarPrato(prato) {
   prato.classList.add("selecionado");
   botaoRefeicao = prato.innerHTML;
   refeicao = prato.querySelector('h2');
-  preco1 = prato.querySelector("h4");
-  console.log(refeicao);
-  console.log(preco1);
+  preco1 = prato.querySelector("h4").getAttribute("data-price");
   verificaPreenchimento();
 }
 
@@ -27,9 +25,7 @@ function selecionarBebida(botaoThisBebida) {
   botaoThisBebida.classList.add("selecionado");
   botaoBeBida = botaoThisBebida.innerHTML;
   bebida = botaoThisBebida.querySelector("h2");
-  preco2 = botaoThisBebida.querySelector("h4");
-  console.log(bebida);
-  console.log(preco2);
+  preco2 = botaoThisBebida.querySelector("h4").getAttribute("data-price");
   verificaPreenchimento();
 }
 
@@ -44,9 +40,7 @@ function selecionarSobremesa(botaoThisSobremesa) {
   botaoThisSobremesa.classList.add("selecionado");
   botaoSobremesa = botaoThisSobremesa.innerHTML;
   sobremesa = botaoThisSobremesa.querySelector("h2");
-  preco3 = botaoThisSobremesa.querySelector("h4");
-  console.log(sobremesa);
-  console.log(preco3);
+  preco3 = botaoThisSobremesa.querySelector("h4").getAttribute("data-price");
   verificaPreenchimento();
 }
 
@@ -64,49 +58,46 @@ function verificaPreenchimento() {
   }
 }
 
+let valorTotalGlobal
 
 function trocarNomes(){
   const nomeRefeicao = document.querySelector(".nome-refeicao");
   nomeRefeicao.innerHTML = refeicao.innerHTML;
-  const valorRefeicao = document.querySelector(".valor-refeicao");
-  valorRefeicao.innerHTML = preco1.innerHTML;
+  let valorRefeicao = document.querySelector(".valor-refeicao");
+  valorRefeicao.innerHTML = formatarEmReal (preco1)
 
   const nomeBebida = document.querySelector(".nome-bebida");
   nomeBebida.innerHTML = bebida.innerHTML;
-  const valorBebida = document.querySelector(".valor-bebida");
-  valorBebida.innerHTML = preco2.innerHTML;
+  let valorBebida = document.querySelector(".valor-bebida");
+  valorBebida.innerHTML = formatarEmReal(preco2)
 
   const nomeSobremesa = document.querySelector(".nome-sobremesa");
   nomeSobremesa.innerHTML = sobremesa.innerHTML;
-  const valorSobremesa = document.querySelector(".valor-sobremesa");
-  valorSobremesa.innerHTML = preco3.innerHTML;
 
-  const valorTotal = document.querySelector(".valor-total");
-  valorTotal = parseInt(preco1) + parseInt(preco2) + parseInt(preco3)
+  let valorSobremesa = document.querySelector(".valor-sobremesa");
+  valorSobremesa.innerHTML= formatarEmReal(preco3);
+  
 
+  let valorTotal = document.querySelector(".valor-total");
+  valorTotalGlobal = parseFloat(preco1) + parseFloat(preco2) + parseFloat(preco3);
+  valorTotal.innerHTML= formatarEmReal(valorTotalGlobal)
 }
 
+function formatarEmReal (num){
+  return parseFloat(num).toLocaleString("pt-BR", {style: 'currency', currency: 'BRL'} )
+}
 
 function fecharPedido() {
   document.querySelector(".confirmar-compra").classList.remove("escondido");
   document.querySelector(".conteudo-total").classList.add("opaco");
-  exibirValorFinal()
 }
-
-function exibirValorFinal(){
-  let precoFinal = (preco1 + preco2 + preco3);
-  alert (precoFinal)
-}
-
 
 function whatsapp(){
-  const mensagem = `Olá, gostaria de fazer o pedido: \n- Prato: ${refeicao.innerHTML}\n- Bebida: ${bebida.innerHTML}\n- Sobremesa: ${sobremesa.innerHTML}\nTotal: R$ 27,70\nNome: Fulano\nEndereço: Rua...`; 
+  const mensagem = `Olá, gostaria de fazer o pedido: \n- Prato: ${refeicao.innerHTML}\n- Bebida: ${bebida.innerHTML}\n- Sobremesa: ${sobremesa.innerHTML}\nTotal: ${formatarEmReal(valorTotalGlobal)}\nNome: Fulano\nEndereço: Rua...`; 
   const URI = `https://wa.me/5521983767744?text=" ${mensagem}`; 
   const encodedURI = encodeURI(URI)
   window.open(encodedURI)
 }
-
-
 
 function cancelar(buttonCancelar){
   document.querySelector(".confirmar-compra").classList.add("escondido");
